@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= stylesheet_link_tag "hnnotify" %>
+  <title>Hacker News Notify</title>
+  <% if @rsslink %><link rel="alternate" type="application/rss+xml" title="Hacker News Nofify Feed for <%= current_user.username %>" href="<%= @rsslink %>" /><% end %>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h1 id="headertitle">Hacker News Notify</h1>
+      <span id="navlinks">
+        <% if current_user %>
+          [<a href="<%= root_path %>">Home</a> | <a href="/watchlist">Watchlist</a> | <a href="<%= profile_path %>">Profile</a> | <a href="<%= logout_path %>">Logout</a>]
+        <% else %>
+          [<a href="<%= root_path %>">Home</a> | <a href="<%= signup_path %>">Sign Up</a> | <a href="<%= login_path %>">Login</a>]
+        <% end %>
+      </span>
+    </div>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flashcontent" %>
+    <% end %>
+    <div id="maincontent">
+      <% if @subtitle %><h2 id="subtitle"><%= @subtitle %></h2><% end %><% if @rsslink %> <a href="<%= @rsslink %>">RSS</a><% end %>
+      <%= yield %>
+    </div>
+  </div>
+  <div id="footer">
+    Created by <a href="http://adamlum.com/about">Adam Lum</a> and is NOT affiliated with <a href="http://news.ycombinator.com">Y Combinator</a>.
+  </div>
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    try {
+      var pageTracker = _gat._getTracker("UA-7489699-3");
+      pageTracker._trackPageview();
+    } catch(err) {}
+  </script>
+</body>
+</html>

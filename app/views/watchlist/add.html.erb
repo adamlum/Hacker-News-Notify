@@ -1,0 +1,18 @@
+<center>
+<table cellspacing="0" style="border:1px solid #ff6500;padding:0;width:50%">
+  <tr><td style="background-color:#ff6500;color:#FFFFFF;text-align:center;font-weight:bold;">Add Watchlist Item</td></tr>
+  <tr>
+    <td style="padding:3px;vertical-align:top;text-align:left;">
+      <center>
+        <% form_tag :action => 'add' do %>
+          <table>
+            <tr><td style="text-align:right;vertical-align:top;">Watch For: </td><td style="text-align:left;vertical-align:top;"><%= text_field_tag "watchfor" %></td></tr>
+            <tr><td style="text-align:right;vertical-align:top;">Type: </td><td style="text-align:left;vertical-align:top;"><%=radio_button_tag("watchtype", "keyword", :checked => true) %>Keyword <%=radio_button_tag("watchtype", "user") %>User</td></tr>
+            <tr><td colspan="2" style="text-align:right;"><%= submit_tag "Add Watchlist Item" %></td>
+          </table>
+        <% end %>
+      </center>
+    </td>
+  </tr>
+</table>
+</center>

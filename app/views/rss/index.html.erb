@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+	<channel>
+		<title>Hacker News Nofify Feed for <%= @rss_user.username %></title>
+		<description>Watchlist matches for hnnotify.com</description>
+		<link>http://hnnotify.com/rss/?u=<%=@rss_user.username %>&amp;v=<%= @rss_user.single_access_token %></link>
+		<% @matches.each do |m| %>
+		<item>
+			<title><%= m.post_title %></title>
+			<link><% if !m.post_url.match("http://") %><%= "http://news.ycombinator.com/" + m.post_url %><% else %><%= m.post_url %><% end %></link>
+			<pubDate><%= m.created_at.strftime("%a, %d %b %Y %H:%M:%S %Z") %></pubDate>
+			<description xml:space="preserve">
+				<![CDATA[
+				<% if !m.post_url.match("http://") %><%= "http://news.ycombinator.com/" + m.post_url %><% else %><%= m.post_url %><% end %>
+				Submitted by <%= m.post_by %>
+				]]>
+			</description>
+		</item>
+		<% end %>
+	</channel>
+</rss>

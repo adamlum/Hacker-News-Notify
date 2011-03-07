@@ -1,0 +1,33 @@
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+  <table>
+  <tr>
+    <td style="text-align:right"><%= f.label :username %></td>
+    <td><%= f.text_field :username %></td><td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:right"><%= f.label :email %></td>
+    <td><%= f.text_field :email %></td><td><span style="font-size:9px;">Only necessary if you'd like to be notified via email.</span></td>
+  </tr>
+  <tr>
+    <td style="text-align:right"><%= f.label :password %></td>
+    <td><%= f.password_field :password %></td><td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:right;white-space:nowrap;"><%= f.label :password_confirmation %></td>
+    <td><%= f.password_field :password_confirmation %></td><td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      No automated sign ups 
+      <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6LcHOQgAAAAAAMxA8FbHt9kdw78zQnnmsPGu63Oe"></script>
+      <noscript>
+        <iframe src="http://api.recaptcha.net/noscript?k=6LcHOQgAAAAAAMxA8FbHt9kdw78zQnnmsPGu63Oe" height="300" width="500" frameborder="0"></iframe><br>
+        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+        <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+      </noscript>
+    </td>
+  </tr>
+  <tr><td colspan="2" style="text-align:right"><%= f.submit "Submit" %></td><td>&nbsp;</td></tr>
+  </table>
+<% end %>

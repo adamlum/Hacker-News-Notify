@@ -1,0 +1,39 @@
+<% if !current_user.email_validated %>
+<br /><br />
+<span style="font-size: 9px">You have not validated your email address and cannot be notified via email until you have done so. You can take care of this by saving an email address on the <a href="<%= profile_path %>">Profile</a> page and clicking on the link that is sent to you.</span>   
+<% end %>
+<br /><br />
+<% if !@watchlists.empty? %>
+  <% @watchlists.each do |watchlist| %>
+  <table class="watchlist" cellspacing="0">
+    <tr>
+      <td class="watchlist_term_cell">
+        <span class="watchlist_term"><%= watchlist.term %></span> / <%=  watchlist.watchlist_type.name %> 
+        <span class="watchlist_options">(<a href="/delete?w=<%= watchlist.id %>">Delete</a>
+        <% if current_user.email_validated %> | <a href="/toggle?w=<%= watchlist.id %>"><% if !watchlist.email_notify %>Notify by Email<% else %>Stop Notifying by Email<% end %></a><% end %>)</span>
+      </td>
+    </tr>
+    <% if !watchlist.matches.empty? %>
+      <% watchlist.matches.each do |match| %>
+        <tr style="background-color:<%= cycle('#FFFFFF', '#CCCCCC') %>">
+          <td style="white-space:nowrap">
+            <%= match.post_title %> by <a href="http://news.ycombinator.com/user?id=<%= match.post_by%>" target="_blank"><%= match.post_by %></a>
+            <span style="font-size: 10px;">at <%= match.created_at.strftime("%m/%d/%Y %H:%M:%S %Z") %> (<a href="<% if match.post_url.include?("http://")%><%= match.post_url %><% else %><%= "http://news.ycombinator.com/" + match.post_url %><% end %>" target="_blank">link</a> | <a href="http://news.ycombinator.com/item?id=<%= match.post_number %>" target="_blank">comments</a>)</span>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr><td>There are no matches for this watchlist item.</td></tr>
+    <% end %>
+  </table><br /><br />
+  <% end %>
+<% else %>
+  <br />You don't have any watchlist items, use the form below to add one.<br /><br />
+<% end %>
+<br /><br />
+<% form_tag :action => 'add' do %>
+  <fieldset>
+    <legend>Add Watchlist Item</legend>
+    Watch For: <%= text_field_tag "watchfor" %> Type: <%=radio_button_tag("watchtype", "keyword", :checked => true) %>Keyword <%=radio_button_tag("watchtype", "user") %>User <%=radio_button_tag("watchtype", "domain") %>Domain <%= submit_tag "Add Watchlist Item" %>
+  </fieldset>
+<% end %>

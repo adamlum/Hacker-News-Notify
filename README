@@ -1,0 +1,4 @@
+This was a small project that scraped the Hacker News "New" page and searched for specific keywords in the title of posts, the submitter of the post, or the domain of the post.
+
+A demo of this project can be found at http://hnnotify.adamlum.com/
+

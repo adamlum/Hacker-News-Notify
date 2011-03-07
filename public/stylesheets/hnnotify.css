@@ -1,0 +1,88 @@
+body {
+  background-color:#FB914A;
+  font-family:Verdana, Helvetica, Arial, sans-serif;
+}
+
+fieldset {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+div#wrapper {
+  width:900px;
+  border:2px solid #000000;
+  background-color:#FFFFFF;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+div#header {
+  width: 100%;
+}
+
+div#maincontent {
+  font-size: 12px;
+  width:98%;
+  padding:6px;
+}
+
+div#footer {
+  width:765px;
+  margin-right:auto;
+  margin-left:auto;
+  text-align:center;
+  font-size:11px;
+}
+
+div#footer a {
+  color: #000000;
+}
+
+div#flashcontent {
+  font-size: 12px;
+  color: #FF0000;
+  font-weight: bold;
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-top: 10px;
+}
+
+h1#headertitle {
+  display:inline;
+  font-weight:normal;
+}
+
+h2#subtitle {
+  display: inline;
+  font-weight: normal;
+}
+
+span#navlinks {
+  font-size:12px;
+}
+
+table.watchlist {
+  width: 90%;
+  border: 1px solid #0C00FF;
+}
+
+td.watchlist_term_cell {
+  background-color: #0C00FF;
+  color: #FFFFFF;
+}
+
+td.watchlist_term_cell a {
+  color: #FFFFFF;
+}
+
+span.watchlist_term {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+span.watchlist_options {
+  font-size: 10px;
+}
